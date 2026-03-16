@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>ZEN History Graph — Visualizer</title>
+  <link rel="stylesheet" href="visualizer.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Top bar -->
+    <header id="toolbar">
+      <h1>ZEN History Graph</h1>
+      <div id="search-box">
+        <input type="text" id="search" placeholder="Search nodes..." autocomplete="off">
+        <div id="search-results" class="hidden"></div>
+      </div>
+      <div id="stats-bar">
+        <span id="stat-nodes">0 nodes</span>
+        <span id="stat-edges">0 edges</span>
+      </div>
+    </header>
+
+    <!-- Filter sidebar -->
+    <aside id="sidebar">
+      <section>
+        <h3>Node Types</h3>
+        <label><input type="checkbox" data-node="Page" checked> Pages</label>
+        <label><input type="checkbox" data-node="Entity" checked> Entities</label>
+        <label><input type="checkbox" data-node="Topic" checked> Topics</label>
+      </section>
+      <section>
+        <h3>Edge Types</h3>
+        <label><input type="checkbox" data-edge="MENTIONS" checked> Mentions</label>
+        <label><input type="checkbox" data-edge="ABOUT" checked> About</label>
+        <label><input type="checkbox" data-edge="LINKS_TO" checked> Links To</label>
+        <label><input type="checkbox" data-edge="TEMPORAL" checked> Temporal</label>
+        <label><input type="checkbox" data-edge="SAME_DOMAIN"> Same Domain</label>
+        <label><input type="checkbox" data-edge="RELATED_TO" checked> Related To</label>
+      </section>
+      <section>
+        <h3>Display</h3>
+        <label>Max nodes <input type="range" id="max-nodes" min="50" max="2000" value="500" step="50">
+          <span id="max-nodes-val">500</span>
+        </label>
+        <label><input type="checkbox" id="show-labels" checked> Show labels</label>
+        <label><input type="checkbox" id="show-arrows"> Show arrows</label>
+      </section>
+      <section>
+        <button id="btn-reset-view" class="btn">Reset View</button>
+        <button id="btn-refresh" class="btn">Refresh Data</button>
+      </section>
+    </aside>
+
+    <!-- Canvas -->
+    <canvas id="graph-canvas"></canvas>
+
+    <!-- Node detail panel -->
+    <div id="detail-panel" class="hidden">
+      <button id="detail-close">&times;</button>
+      <h3 id="detail-title"></h3>
+      <div id="detail-type"></div>
+      <div id="detail-body"></div>
+      <div id="detail-connections"></div>
+    </div>
+
+    <!-- Hover tooltip -->
+    <div id="tooltip" class="hidden"></div>
+  </div>
+  <script src="visualizer.js"></script>
+</body>
+</html>

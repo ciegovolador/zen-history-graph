@@ -1,0 +1,16 @@
+{
+  "name": "zen-history-graph",
+  "version": "2.1.0",
+  "description": "ZEN Browser extension to convert browser history into a knowledge graph for RAG",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "esbuild src/background/background.js --bundle --outfile=dist/background/background.js --format=esm --platform=browser && esbuild src/popup/popup.js --bundle --outfile=dist/popup/popup.js --format=iife --platform=browser && esbuild src/visualizer/visualizer.js --bundle --outfile=dist/visualizer/visualizer.js --format=iife --platform=browser && cp src/manifest.json dist/ && cp src/popup/popup.html dist/popup/ && cp src/popup/popup.css dist/popup/ && cp src/visualizer/visualizer.html dist/visualizer/ && cp src/visualizer/visualizer.css dist/visualizer/",
+    "dev": "npm run build -- --watch",
+    "test": "node --test tests/**/*.test.js"
+  },
+  "devDependencies": {
+    "esbuild": "^0.24.0"
+  },
+  "dependencies": {}
+}

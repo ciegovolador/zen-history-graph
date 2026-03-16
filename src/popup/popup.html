@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>ZEN History Graph</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>ZEN History Graph</h1>
+    </header>
+
+    <nav id="tabs">
+      <button class="tab active" data-tab="dashboard">Dashboard</button>
+      <button class="tab" data-tab="settings">Settings</button>
+      <button class="tab" data-tab="export">Export</button>
+    </nav>
+
+    <!-- Dashboard Panel -->
+    <section id="dashboard" class="panel active">
+      <div id="stats">
+        <p class="placeholder">No data yet. Run extraction to build your knowledge graph.</p>
+      </div>
+      <div id="progress-container" class="hidden">
+        <div id="progress-bar"><div id="progress-fill"></div></div>
+        <p id="progress-text"></p>
+      </div>
+      <button id="btn-extract" class="primary">Extract & Build Graph</button>
+      <button id="btn-visualize" class="secondary" style="margin-top:8px">Open Graph Visualizer</button>
+    </section>
+
+    <!-- Settings Panel -->
+    <section id="settings" class="panel hidden">
+      <label>Date Range (days)
+        <input type="number" id="setting-dateRange" value="90" min="1" max="3650">
+      </label>
+      <label>Batch Size
+        <input type="number" id="setting-batchSize" value="500" min="50" max="5000">
+      </label>
+      <label>Exclusion Patterns (one per line)
+        <textarea id="setting-exclusions" rows="4" placeholder="*.example.com&#10;internal.corp/*"></textarea>
+      </label>
+      <button id="btn-save-settings" class="primary">Save Settings</button>
+    </section>
+
+    <!-- Export Panel -->
+    <section id="export" class="panel hidden">
+      <button id="btn-export-jsonld" class="secondary">Export Graph (JSON-LD)</button>
+      <button id="btn-export-rag" class="secondary">Export for RAG</button>
+      <button id="btn-export-summary" class="secondary">Export Context Summary</button>
+      <button id="btn-copy-context" class="secondary">Copy Context to Clipboard</button>
+    </section>
+
+    <div id="toast" class="hidden"></div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
